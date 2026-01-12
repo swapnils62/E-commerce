@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'html/base.html' %}
+
+{% block body_block %}
+<h1 align="center">
+    this is home page
+</h1>
+<div class="container mt-5 pt-5">
+    <div class="row">
+        {% for i in data %}
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex align-items-stretch">
+            <div class="card glass-card w-100">
+            <img src="{{i.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p class="card-text">{{i.discription}}</p>
+                <a href="#" class="btn btn-dark">Cart</a>
+                <a href="#" class="btn btn-warning">Buy</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
