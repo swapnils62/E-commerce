@@ -7,3 +7,5 @@ def home_view(request):
     data=Product.objects.all()
     return render(request, 'html/home.html',{'data':data})
 
+print("Hello")
+
