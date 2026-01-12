@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'authantication'
 ]
 
 MIDDLEWARE = [
@@ -118,8 +119,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL='/home'
+LOGOUT_REDIRECT_URL='login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PASSWORD_HASHERS=[
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    # 'django.contrib.auth.hashers.PBKDF2SHA256PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',  # by default algo
+    'django.contrib.auth.hashers.BCryptPasswordHasher'
+
+    ]
