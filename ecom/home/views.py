@@ -13,3 +13,5 @@ def home2_view(request):
     user=request.user
     data=Product.objects.all()
     return render(request, 'html/loginhome.html',{'user':user,'data':data})
+
+print('hello')
