@@ -1,16 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="margin-left: 41vw;">
-    <h2>Welcome {{user.username}}</h2>
-    <ul>
-        <li><strong>Email:</strong>{{user.email}}</li>
-        <li><strong>First Name:</strong>{{user.first_name}}</li>
-        <li><strong>Last Name:</strong>{{user.last_name}}</li>
-    </ul>
-</body>
-</html>
+{% extends 'html/base.html' %}
+{% block body_block %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4 bg-light">
+                <div class="rounded-top text-white text-center p-4"
+                     style="background: linear-gradient(135deg,#f7b500,#ffcc00);">
+                    <h4 class="fw-bold mb-0">Welcome {{ user.username }}</h4>
+                    <small>E-commerce Customer</small>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-muted">Email</span>
+                            <span class="fw-semibold">{{ user.email }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-muted">First Name</span>
+                            <span class="fw-semibold">{{ user.first_name }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-muted">Last Name</span>
+                            <span class="fw-semibold">{{ user.last_name }}</span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
