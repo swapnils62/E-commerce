@@ -14,4 +14,6 @@ def home2_view(request):
     data=Product.objects.all()
     return render(request, 'html/loginhome.html',{'user':user,'data':data})
 
-
+@login_required
+def profile_view(request):
+    return render(request,'html/profile.html',{'user':request.user})
