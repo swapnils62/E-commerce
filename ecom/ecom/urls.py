@@ -28,5 +28,6 @@ urlpatterns = [
     path('profile/', views.profile_view),
     path('additem/<int:id>/', cart_create),
     path('cart/', view_cart),
+    path('about/', views.about_view),
     path('accounts/', include('django.contrib.auth.urls'))
 ]

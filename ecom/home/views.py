@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Product
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 def home_view(request):
@@ -17,3 +18,9 @@ def home2_view(request):
 @login_required
 def profile_view(request):
     return render(request,'html/profile.html',{'user':request.user})
+
+def about_view(request):
+    return render(request,'html/about.html')
+
+
+
