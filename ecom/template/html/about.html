@@ -1,50 +1,74 @@
 {% extends 'html/base.html' %}
 {% block body_block %}
 
+<div class="container mt-5">
 
-<main class="about-container">
-    <section class="about-hero">
-        <h1>Our Story</h1>
-        <p class="subtitle">Building a better way to shop since 2025.</p>
-    </section>
+    <!-- HERO CARD -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
 
-    <hr>
+            <div class="card shadow-lg border-0 rounded-4 bg-light text-center">
+                <div class="rounded-top text-white p-4"
+                     style="background: linear-gradient(135deg,#f7b500,#ffcc00);">
+                    <h3 class="fw-bold mb-0">Our Story</h3>
+                    <small>Building a better way to shop since 2025.</small>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-0">
+                        "Our mission is to empower customers by providing premium products at fair prices, 
+                        delivered with unparalleled service."
+                    </p>
+                </div>
+            </div>
 
-    <section class="about-content">
-        <div class="about-text">
-            <h2>Who We Are</h2>
-            <p>
-                Welcome to <strong>VelaMart</strong>. We started with a simple idea: 
-                to provide high-quality products that combine functionality with style. 
-                Our team is passionate about finding the best items for our community.
-            </p>
-            
-            <p>
-                What began as a small project in <strong>Pune</strong> has grown into 
-                a trusted platform for thousands of customers. We believe in transparency, 
-                customer satisfaction, and the power of great design.
-            </p>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 bg-light h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold text-warning">Who We Are</h5>
+                    <p>
+                        Welcome to <strong>VelaMart</strong>. We started with a simple idea: 
+                        to provide high-quality products that combine functionality with style. 
+                        Our team is passionate about finding the best items for our community.
+                    </p>
+                    <p>
+                        What began as a small project in <strong>Pune</strong> has grown into 
+                        a trusted platform for thousands of customers. We believe in transparency, 
+                        customer satisfaction, and the power of great design.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div class="about-features">
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li><strong>Quality First:</strong> We hand-inspect every product before it reaches your door.</li>
-                <li><strong>Secure Checkout:</strong> Your security is our priority with industry-standard encryption.</li>
-                <li><strong>Fast Shipping:</strong> We work around the clock to ensure your orders arrive on time.</li>
-                <li><strong>Always Here:</strong> Our 24/7 support team is just a message away.</li>
-            </ul>
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 bg-light h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold text-warning">Why Choose Us?</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Quality First:</strong> We hand-inspect every product before it reaches your door.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Secure Checkout:</strong> Your security is our priority with industry-standard encryption.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Fast Shipping:</strong> We work around the clock to ensure your orders arrive on time.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Always Here:</strong> Our 24/7 support team is just a message away.
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <section class="about-mission">
-        <blockquote>
-            "Our mission is to empower customers by providing premium products at fair prices, 
-            delivered with unparalleled service."
-        </blockquote>
-    </section>
+    </div>
 
-</main>
+</div>
 
 {% endblock %}
-
