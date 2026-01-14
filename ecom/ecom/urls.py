@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from home import views
 from authantication.views import Signup_view,logout_view
+from cart.views import cart_create,view_cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,7 @@ urlpatterns = [
     path('signup/', Signup_view),
     path('out/', logout_view),
     path('profile/', views.profile_view),
+    path('additem/<int:id>/', cart_create),
+    path('cart/', view_cart),
     path('accounts/', include('django.contrib.auth.urls'))
 ]
