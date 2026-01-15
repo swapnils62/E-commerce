@@ -24,3 +24,9 @@ def view_cart(request):
     cart=Cart.objects.filter(user=request.user).first()
     cartitem=Cart_item.objects.filter(cart=cart)
     return render(request,'html/cart.html',{'cartitem':cartitem})
+
+def delete_cartitem(request,id):
+    cart=Cart.objects.get(user=request.user)
+    cartitem=Cart_item.objects.get(cart=cart,id=id)
+    cartitem.delete()
+    return redirect('/cart')

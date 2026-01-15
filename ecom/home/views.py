@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Product
 from django.contrib.auth.decorators import login_required
-
 from authantication.form import FeedbackForm
 from django.contrib import messages
 
@@ -22,6 +21,7 @@ def home2_view(request):
 def profile_view(request):
     return render(request,'html/profile.html',{'user':request.user})
 
+
 def about_view(request):
     return render(request,'html/about.html')
 
@@ -35,5 +35,4 @@ def feedback_view(request):
             return redirect('/') 
     else:
         form = FeedbackForm()
-    
     return render(request, 'html/feedback.html', {'form': form})

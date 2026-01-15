@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from home import views
 from authantication.views import Signup_view,logout_view
-from cart.views import cart_create,view_cart
+from cart.views import cart_create,view_cart,delete_cartitem
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +31,10 @@ urlpatterns = [
     path('profile/', views.profile_view),
     path('additem/<int:id>/', cart_create),
     path('cart/', view_cart),
+    path('delete/<int:id>/', delete_cartitem),
     path('about/', views.about_view),
     path('feedback/', views.feedback_view),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends 'html/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block body_block %}
 
-<body>
     <h2>Send us your Feedback</h2>
     <form method="POST">
         {% csrf_token %}
@@ -20,6 +15,5 @@
     <p>{{ message }}</p>
     {% endfor %}
     {% endif %}
-</body>
 
-</html>
+{% endblock %}
