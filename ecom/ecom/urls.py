@@ -25,15 +25,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view),
-    path('home', views.home2_view),
+    path('profile/', views.profile_view),
+    path('about/', views.about_view),
+    path('feedback/', views.feedback_view),
+    path('Address/', views.add_address),
     path('signup/', Signup_view),
     path('out/', logout_view),
-    path('profile/', views.profile_view),
     path('additem/<int:id>/', cart_create),
     path('cart/', view_cart),
     path('delete/<int:id>/', delete_cartitem),
-    path('about/', views.about_view),
-    path('feedback/', views.feedback_view),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 

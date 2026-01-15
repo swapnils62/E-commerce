@@ -4,43 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <title>Velamart</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/home">VelaMart</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="/">VelaMart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/about/">About<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/feedback/">Feedback<span class="sr-only">(current)</span></a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/feedback/">Feedback</a></li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-warning" type="submit" style="margin-right: 10px;"><a href="/accounts/logout">Logout</a></button>
-                <button class="btn btn-warning" type="submit" style="margin-right: 10px;"><a href="/cart">cart</a></button>
-                <button class="btn btn-dark" type="submit" style="margin-right: 10px;"><a href="http://127.0.0.1:8000/profile">👨‍💻</a></button>
-                
-            </form>
+            {% if user.is_authenticated %}
+                <a href="/cart/" class="btn btn-warning mr-2">Cart</a>
+                <a href="/profile/" class="btn btn-dark mr-2">👨‍💻</a>
+                <a href="/accounts/logout/" class="btn btn-danger">Logout</a>
+            {% else %}
+                <a href="/accounts/login/" class="btn btn-warning mr-2">Login</a>
+                <a href="/signup/" class="btn btn-dark">Signup</a>
+            {% endif %}
+
         </div>
     </nav>
+
     {% block body_block %}
     {% endblock %}
+
+    <footer class="bg-dark text-light pt-4 pb-2 mt-5">
+        <div class="container">
+            <div class="row text-center text-md-left">
+                <div class="col-md-4">
+                    <h5>Velamart</h5>
+                    <p>Your trusted online shopping destination.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/home" class="text-light">Home</a></li>
+                        <li><a href="/cart/" class="text-light">Cart</a></li>
+                        <li><a href="/profile/" class="text-light">My Account</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h6>Support</h6>
+                    <p>Email: support@velamart.com</p>
+                    <p>WhatsApp: +91-XXXXXXXXXX</p>
+                </div>
+            </div>
+
+            <hr class="bg-light">
+            <p class="text-center mb-0">© 2026 Velamart. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>

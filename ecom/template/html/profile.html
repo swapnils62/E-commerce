@@ -5,34 +5,81 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
 
-            <div class="card shadow-lg border-0 rounded-4 bg-light">
+            <!-- USER CARD -->
+            <div class="card shadow-lg border-0 rounded-4 mb-4">
                 <div class="rounded-top text-white text-center p-4"
                      style="background: linear-gradient(135deg,#f7b500,#ffcc00);">
                     <h4 class="fw-bold mb-0">Welcome {{ user.username }}</h4>
                     <small>E-commerce Customer</small>
-                </div>
-                <div class="card-body">
 
+                </div>
+
+                <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between">
-                            <span class="text-muted">Email</span>
-                            <span class="fw-semibold">{{user.email}}</span>
+                            <span>Email</span>
+                            <span>{{ user.email }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span class="text-muted">First Name</span>
-                            <span class="fw-semibold">{{user.first_name}}</span>
+                            <span>First Name</span>
+                            <span>{{ user.first_name }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span class="text-muted">Last Name</span>
-                            <span class="fw-semibold">{{user.last_name}}</span>
+                            <span>Last Name</span>
+                            <span>{{ user.last_name }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ADDRESS CARD -->
+            {% if address %}
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="rounded-top text-white text-center p-4"
+                     style="background: linear-gradient(135deg,#f7b500,#ffcc00);">
+                    <h4 class="fw-bold mb-0">Your Address</h4>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Address</span>
+                            <span>{{ address.address }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>City</span>
+                            <span>{{ address.city }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>State</span>
+                            <span>{{ address.state }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Country</span>
+                            <span>{{ address.country }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Pincode</span>
+                            <span>{{ address.pincode }}</span>
                         </li>
                     </ul>
 
+                    <a href="/Address/" class="btn btn-warning w-100 mt-3">Change Address</a>
                 </div>
             </div>
+
+            {% else %}
+            <div class="alert alert-warning text-center">
+                You have not added any address yet.
+                <br>
+                <a href="/Address/" class="btn btn-dark btn-sm mt-2">Add Address</a>
+            </div>
+            {% endif %}
 
         </div>
     </div>
 </div>
+
+<div style="height:150px;"></div>
 
 {% endblock %}
