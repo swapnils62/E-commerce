@@ -4,7 +4,7 @@ from .models import Feedback, Address
 
 # Register your models here.
 class Productadmin(admin.ModelAdmin):
-    list_display=['id', 'name', 'image', 'discription', 'quantity']
+    list_display=['id', 'name', 'image', 'discription','price', 'quantity']
 
 admin.site.register(Product,Productadmin)
 
