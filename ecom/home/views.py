@@ -47,3 +47,10 @@ def add_address(request):
     else:
         form = Add_address()
     return render(request, 'html/address.html', {'form': form})
+
+def product_view(request,id):
+    product=Product.objects.get(id=id)
+    return render(request,'html/product.html',{'product':product})
+
+
+

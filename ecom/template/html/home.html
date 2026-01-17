@@ -59,11 +59,16 @@
   <div class="row">
     {% for i in data %}
 
+
+
+    
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex align-items-stretch">
-      <div class="card glass-card w-100">
+      <div class="card glass-card w-100" >
+        <a href="product/{{ i.id }}/">
         <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+        <h5 class="card-title">{{i.name}}</h5>
+        </a>
         <div class="card-body">
-          <h5 class="card-title">{{i.name}}</h5>
           <h5 class="card-title">₹{{i.price}}</h5>
           <p class="card-text">{{i.discription}}</p>
           {% if user.is_authenticated %}
