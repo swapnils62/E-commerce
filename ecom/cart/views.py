@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from home.models import Product
 from .models import Cart, Cart_item
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+@login_required
 def cart_create(request,id):
     product=Product.objects.get(id=id)
 
@@ -20,6 +23,7 @@ def cart_create(request,id):
 
     return redirect('/')
 
+@login_required
 def view_cart(request):
     cart=Cart.objects.filter(user=request.user).first()
     cartitem=Cart_item.objects.filter(cart=cart)
@@ -30,6 +34,7 @@ def view_cart(request):
         quantity=i.quantity+quantity
     return render(request,'html/cart.html',{'cartitem':cartitem,"total":total,"quantity":quantity})
 
+@login_required
 def delete_cartitem(request,id):
     cart=Cart.objects.get(user=request.user)
     cartitem=Cart_item.objects.get(cart=cart,id=id)

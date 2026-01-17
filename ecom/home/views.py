@@ -21,7 +21,7 @@ def profile_view(request):
 def about_view(request):
     return render(request,'html/about.html')
 
-
+@login_required
 def feedback_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
