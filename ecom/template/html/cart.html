@@ -1,26 +1,73 @@
 {% extends 'html/base.html' %}
 {% block body_block %}
-
+<h4 class="mb-4 fw-bold" align="center" style="margin: 10px;">My Cart</h4>
 <div class="container mt-5 pt-5">
     <div class="row">
 
-        {% for i in cartitem %}
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex align-items-stretch">
-            <div class="card glass-card w-100">
-                <img src="{{ i.product.image.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ i.product.name }}</h5>
-                    <h5 class="card-title">₹{{ i.product.price }}</h5>
-                    <p class="card-text">Quantity: {{ i.quantity }}</p>
-                    <p class="card-text">{{ i.product.discription }}</p>
-                    <a href="" class="btn btn-warning btn-sm">Buy</a>
-                    <a href="/delete/{{ i.id }}/" class="btn btn-danger btn-sm">Remove</a>
+        <!-- LEFT SIDE : CART CARDS -->
+        <div class="col-md-8">
+            
+
+            {% for i in cartitem %}
+            <div class="card shadow-sm mb-3">
+                <div class="row no-gutters align-items-center">
+
+                    <div class="col-md-2 text-center p-2">
+                        <img src="{{ i.product.image.url }}" class="img-fluid"
+                            style="max-height:80px; object-fit:contain;" alt="{{ i.product.name }}">
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="card-body py-2">
+                            <h6 class="mb-1">{{ i.product.name }}</h6>
+                            <p class="mb-1 small text-muted">{{ i.product.discription }}</p>
+
+                            <div class="d-flex justify-content-between">
+                                <span class="text-success fw-bold">₹{{ i.product.price }}</span>
+                                <span>Qty: {{ i.quantity }}</span>
+                            </div>
+
+                            <div class="mt-2">
+                                <a href="#" class="btn btn-warning btn-sm">Buy</a>
+                                <a href="/delete/{{ i.id }}/" class="btn btn-danger btn-sm">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
 
+        </div>
+
+        <!-- RIGHT SIDE : NEW DIV -->
+       <div class="col-md-4">
+    <div class="card shadow-sm position-sticky" style="top:100px;">
+        <div class="card-body">
+            <h5 class="mb-3 fw-bold">Order Summary</h5>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Items</span>
+                <span>{{ quantity }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Total Discount</span>
+                <span>₹0</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Tax</span>
+                <span>₹0</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold mb-3">
+                <span>Total</span>
+                <span>₹{{ total }}</span>
+            </div>
+
+            <button class="btn btn-dark btn-block">Checkout</button>
+
+        </div>
     </div>
 </div>
 
-{% endblock %}
+
+        {% endblock %}

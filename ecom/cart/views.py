@@ -18,12 +18,17 @@ def cart_create(request,id):
     else:
         cartitem=Cart_item.objects.create(cart=cart,product=product,quantity=1)
 
-    return redirect('/home')
+    return redirect('/')
 
 def view_cart(request):
     cart=Cart.objects.filter(user=request.user).first()
     cartitem=Cart_item.objects.filter(cart=cart)
-    return render(request,'html/cart.html',{'cartitem':cartitem})
+    total=0
+    quantity=0
+    for i in cartitem:
+        total=(i.quantity*i.product.price)+total
+        quantity=i.quantity+quantity
+    return render(request,'html/cart.html',{'cartitem':cartitem,"total":total,"quantity":quantity})
 
 def delete_cartitem(request,id):
     cart=Cart.objects.get(user=request.user)
