@@ -1,0 +1,61 @@
+{% extends 'html/base.html' %}
+{% block body_block %}
+
+<div class="container mt-5">
+  <h3>Order Summary</h3>
+  <hr>
+
+  <!-- CART ITEMS -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <strong>Items</strong>
+    </div>
+    <div class="card-body">
+      {% for item in cart_items %}
+        <div class="row mb-3">
+          <div class="col-md-2">
+            <img src="{{ item.product.image.url }}" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <h6>{{ item.product.name }}</h6>
+            <p>Quantity: {{ item.quantity }}</p>
+          </div>
+          <div class="col-md-4 text-right">
+            <strong>₹{{ item.product.price|add:"0" }}</strong>
+          </div>
+        </div>
+        <hr>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- ADDRESS SELECTION -->
+  <div class="card mb-4">
+  <div class="card-header">
+    <strong>Delivery Address</strong>
+  </div>
+  <div class="card-body">
+    <p class="mb-1">{{ address.address }}</p>
+    <p class="mb-1">
+      {{ address.city }}, {{ address.state }}
+    </p>
+    <p class="mb-1">
+      {{ address.country }} - {{ address.pincode }}
+    </p>
+  </div>
+</div>
+
+
+
+  <!-- TOTAL & PLACE ORDER -->
+  <div class="card">
+    <div class="card-body text-right">
+      <h4>Total Amount: ₹{{ total }}</h4>
+      <a href='/orderplaced/{{address.id}}/' class="btn btn-warning btn-lg mt-3">Place Order</a>
+    </div>
+  </div>
+
+      </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'html/base.html' %}
+{% block body_block %}
+
+<div class="container mt-5 pt-5">
+    <h3 class="mb-4 fw-bold text-center">My Orders</h3>
+
+    {% if order %}
+        {% for o in order %}
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header d-flex justify-content-between">
+                <span>
+                    <strong>Order ID:</strong> {{ o.id }}
+                </span>
+                <span>
+                    <strong>Status:</strong> {{ o.status }}
+                </span>
+            </div>
+
+            <div class="card-body">
+                <p class="mb-1">
+                    <strong>Total Amount:</strong> ₹{{ o.total_amount }}
+                </p>
+                <p class="mb-3">
+                    <strong>Delivery Address:</strong><br>
+                    {{ o.address.address }},
+                    {{ o.address.city }},
+                    {{ o.address.state }},
+                    {{ o.address.country }} -
+                    {{ o.address.pincode }}
+                </p>
+
+                <hr>
+
+                <h6 class="fw-bold">Items</h6>
+
+                {% for i in orderitem %}
+                    {% if i.order.id == o.id %}
+                    <div class="row align-items-center mb-2">
+                        <div class="col-md-6">
+                            {{ i.product.name }}
+                        </div>
+                        <div class="col-md-2">
+                            Qty: {{ i.quantity }}
+                        </div>
+                        <div class="col-md-2">
+                            ₹{{ i.price }}
+                        </div>
+                        <div class="col-md-2">
+                            ₹{{ i.subtotal }}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center">
+            You have not placed any orders yet.
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

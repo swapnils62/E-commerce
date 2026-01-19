@@ -48,6 +48,18 @@ def add_address(request):
         form = Add_address()
     return render(request, 'html/address.html', {'form': form})
 
+
+def update_address(request):
+    address=Address.objects.filter(user=request.user).last()
+    form=Add_address(instance=address)
+    if request.method=='POST':
+        form=Add_address(request.POST,instance=address)
+        if form.is_valid():
+            form.save()
+            return redirect('/profile')
+    return render(request,'html/address.html',{"form":form})
+    
+
 def product_view(request,id):
     product=Product.objects.get(id=id)
     return render(request,'html/product.html',{'product':product})

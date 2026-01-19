@@ -18,6 +18,7 @@ from django.urls import path,include
 from home import views
 from authantication.views import Signup_view,logout_view
 from cart.views import cart_create,view_cart,delete_cartitem
+from order.views import choose_add,New_address,Order_sum,place_order,Orderhistory
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('about/', views.about_view),
     path('feedback/', views.feedback_view),
     path('Address/', views.add_address),
+    path('updateadd/', views.update_address),
     path('signup/', Signup_view),
     path('out/', logout_view),
     path('additem/<int:id>/', cart_create),
@@ -36,6 +38,12 @@ urlpatterns = [
     path('product/<int:id>/', views.product_view),
     path('delete/<int:id>/', delete_cartitem),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('chooseadd/', choose_add),
+    path('newaddress/', New_address),
+    path('newaddress/', New_address),
+    path('ordersum/<int:id>/', Order_sum),
+    path('orderplaced/<int:id>/', place_order),
+    path('orderhistory/', Orderhistory),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
