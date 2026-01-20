@@ -11,20 +11,24 @@ from home.models import Product
 @login_required
 def choose_add(request,productid=None):
     address=Address.objects.filter(user=request.user)
-    return render(request, 'html/choose_address.html',{"address":address,"productid":productid})
+    next_url = request.get_full_path()
+    return render(request, 'html/choose_address.html',{"address":address,"productid":productid,"next": next_url})
 
 @login_required
 def New_address(request):
+    next_url = request.GET.get('next')
     if request.method == 'POST':
         form = Add_address(request.POST)
         if form.is_valid():
             address = form.save(commit=False)
             address.user = request.user   
             address.save()
-            return redirect(request.META.get('HTTP_REFERER', '/'))
+            if next_url:
+                return redirect(next_url)
+            return redirect('/chooseadd/')
     else:
         form = Add_address()
-    return render(request, 'html/address.html', {'form': form})
+    return render(request, 'html/address.html', {'form': form,'next': next_url})
 
 @login_required
 def Order_sum(request,id,productid=None):
