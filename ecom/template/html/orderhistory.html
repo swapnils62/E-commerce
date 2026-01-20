@@ -1,38 +1,63 @@
 {% extends 'html/base.html' %}
 {% block body_block %}
 
-<div class="container mt-5 pt-5">
-    <h3 class="mb-4 fw-bold text-center">My Orders</h3>
+<div class="container mt-5 mb-5">
+    <h3 class="mb-4 font-weight-bold text-center text-warning">
+        My Orders
+    </h3>
 
     {% if order %}
         {% for o in order %}
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header d-flex justify-content-between">
+        <div class="card mb-4 shadow-sm border-0">
+
+            <!-- ORDER HEADER -->
+            <div class="card-header bg-light d-flex justify-content-between align-items-center">
                 <span>
                     <strong>Order ID:</strong> {{ o.id }}
                 </span>
-                <span>
-                    <strong>Status:</strong> {{ o.status }}
+                <span class="badge badge-warning p-2">
+                    {{ o.status }}
                 </span>
             </div>
 
+            <!-- ORDER BODY -->
             <div class="card-body">
-                <p class="mb-1">
-                    <strong>Total Amount:</strong> ₹{{ o.total_amount }}
-                </p>
-                <p class="mb-3">
-                    <strong>Delivery Address:</strong><br>
-                    {{ o.address.address }},
-                    {{ o.address.city }},
-                    {{ o.address.state }},
-                    {{ o.address.country }} -
-                    {{ o.address.pincode }}
-                </p>
+
+                <!-- ORDER SUMMARY -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p class="mb-1">
+                            <strong>Total Amount:</strong>
+                            <span class="text-warning font-weight-bold">
+                                ₹{{ o.total_amount }}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ADDRESS -->
+                <div class="mb-3">
+                    <strong>Delivery Address:</strong>
+                    <p class="mb-0 text-muted">
+                        {{ o.address.address }},
+                        {{ o.address.city }},
+                        {{ o.address.state }},
+                        {{ o.address.country }} -
+                        {{ o.address.pincode }}
+                    </p>
+                </div>
 
                 <hr>
 
-                <h6 class="fw-bold">Items</h6>
+                <!-- ITEMS HEADER -->
+                <div class="row font-weight-bold mb-2">
+                    <div class="col-md-6">Product</div>
+                    <div class="col-md-2">Qty</div>
+                    <div class="col-md-2">Price</div>
+                    <div class="col-md-2">Subtotal</div>
+                </div>
 
+                <!-- ITEMS LIST -->
                 {% for i in orderitem %}
                     {% if i.order.id == o.id %}
                     <div class="row align-items-center mb-2">
@@ -40,7 +65,7 @@
                             {{ i.product.name }}
                         </div>
                         <div class="col-md-2">
-                            Qty: {{ i.quantity }}
+                            {{ i.quantity }}
                         </div>
                         <div class="col-md-2">
                             ₹{{ i.price }}

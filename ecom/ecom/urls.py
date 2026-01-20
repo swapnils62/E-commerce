@@ -39,10 +39,10 @@ urlpatterns = [
     path('delete/<int:id>/', delete_cartitem),
     path('accounts/', include('django.contrib.auth.urls')),
     path('chooseadd/', choose_add),
+    path('chooseadd/<int:productid>/', choose_add),
     path('newaddress/', New_address),
-    path('newaddress/', New_address),
-    path('ordersum/<int:id>/', Order_sum),
-    path('orderplaced/<int:id>/', place_order),
+    path('ordersum/<int:id>/<int:productid>/', Order_sum),
+    path('orderplaced/<int:id>/<int:productid>/', place_order),
     path('orderhistory/', Orderhistory),
 ]
 
